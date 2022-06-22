@@ -1,6 +1,10 @@
+import React from 'react';
 import ListRepoComponent from 'component/list-repo/list-repo';
 import configureStore from 'redux-mock-store';
 import ReactTestUtils from 'react-dom/test-utils'; 
+import { mount } from 'enzyme'; 
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux'; 
 
 const mockDispatch = jest.fn();
@@ -9,32 +13,29 @@ jest.mock('react-redux', () => ({
   useDispatch: () => mockDispatch
 }));
 
-// it('loads data on init', () => {
-//   const mockedDispatch = jest.fn();
-//   useSelector.mockImplementation((selectorFn) => selectorFn(yourMockedStoreData));
-//   useDispatch.mockReturnValue(mockedDispatch);
-//   mount(<Router><Clients history={historyMock} /></Router>);
-//   expect(mockDispatch).toHaveBeenCalledWith(/*arguments your expect*/);
-// });
-
-
 describe('With React Testing Library', () => {
     const initialState = { output: '' };
+describe('<ListRepoComponent />', () => {
+  it('has a div tag', () => {
     const mockStore = configureStore();
     let store;
 
     it('has store', () => {
         store = mockStore(initialState);
         expect(store).not.toBeNull();
+    const store = mockStore({
+      repo: {
+        repo: []
+      }
     });
 })
 
 describe('ListRepoComponent', () => {
- 
+
     it('passing test', () => {
       expect(true).toBeTruthy();
     })
-   
+
     it('has a div tag', () => {
         const component:any = ReactTestUtils.renderIntoDocument(<ListRepoComponent/>);
         let div = ReactTestUtils.findRenderedDOMComponentWithTag(
@@ -49,5 +50,17 @@ describe('ListRepoComponent', () => {
         );
     })
   })
+  
+    const wrapper = mount(
+      <Provider store={store}>
+        <BrowserRouter>
+          <ListRepoComponent />
+        </BrowserRouter>
+      </Provider>
+    );
 
-export {};
+    expect(wrapper.find('a').text()).toEqual('ADD ')
+  });
+});
+
+export {}; 

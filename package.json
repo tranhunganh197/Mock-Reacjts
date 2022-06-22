@@ -2,6 +2,9 @@
   "name": "reactjs-mock",
   "version": "0.1.0",
   "private": true,
+  "transform": {
+    "\\.js$": "<rootDir>/node_modules/babel-jest"
+  },
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -37,7 +40,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --silent",
+    "test:coverage": "jest --silent --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -54,6 +58,9 @@
         ],
         "rules": {
           "import/no-anonymous-default-export": "off"
+        },
+        "enzyme": {
+          "cheerio": "1.0.0.rc-3"
         }
       }
     ]
@@ -73,6 +80,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
     "@storybook/addon-actions": "^6.5.6",
     "@storybook/addon-essentials": "^6.5.6",
     "@storybook/addon-interactions": "^6.5.6",
@@ -87,11 +95,15 @@
     "@types/enzyme": "^3.10.12",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/redux-mock-store": "^1.0.3",
-    "babel-jest": "^28.1.0",
-    "babel-plugin-named-exports-order": "0.0.2",
-    "jest": "^28.1.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",
+    "babel-jest": "^28.1.1",
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
+    "jest-svg-transformer": "^1.0.0",
+    "jest-transform-stub": "^2.0.0",
     "prop-types": "^15.8.1",
-    "react-test-render": "^1.1.2",
+    "regenerator-runtime": "^0.13.9",
+    "ts-node": "^10.8.1",
     "webpack": "^5.72.1"
   }
 }
