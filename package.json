@@ -93,11 +93,7 @@
     "@types/enzyme": "^3.10.12",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/redux-mock-store": "^1.0.3",
-    "babel-jest": "^28.1.0",
-    "babel-plugin-named-exports-order": "0.0.2",
-    "jest": "^28.1.0",
     "prop-types": "^15.8.1",
-    "react-test-render": "^1.1.2",
     "webpack": "^5.72.1"
   }
 }

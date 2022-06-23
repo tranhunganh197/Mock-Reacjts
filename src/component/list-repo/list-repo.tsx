@@ -73,7 +73,7 @@ function ListRepoComponent() {
                 <TableCell align="right">{row.watchers_count}</TableCell>
                 <TableCell align="right">{row.open_issues}</TableCell>
                 <TableCell align="right">{row.private ? 'X' : 'O'}</TableCell>
-                <TableCell align="center"><Button onClick={() => handleOpenDialog(row)}>Update</Button></TableCell>
+                <TableCell align="center"><Button id='update' onClick={() => handleOpenDialog(row)}>Update</Button></TableCell>
                 <TableCell align="center" onClick={() => handleDelete(row.id)}><Button>Delete</Button></TableCell>
               </TableRow>
             ))}
