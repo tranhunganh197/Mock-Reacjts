@@ -22,7 +22,6 @@ export const repoSlice = createSlice({
       });
      },
      deleteItem(state,action) {
-      console.log(action)
         state.repo = state.repo.filter((item) => item.id !== action.payload);
      }
   },

@@ -35,31 +35,19 @@ describe('<ListRepoComponent />', () => {
   it('has add button', () => {
     expect(wrapper.find('a').text()).toEqual('ADD ')
   });
-  it('has update button', () => {
-    const mockCallBack = jest.fn();
-    const button = mount(<Button onClick={mockCallBack}>Update</Button>);
-    button.find('button').simulate('click');
-    expect(mockCallBack.mock.calls.length).toEqual(1);
-  })
   it('is Show Update Dialog', () => {
     const mockCallBack = jest.fn();
-    const isShowDialog = false;
     const wrapper = mount(
       <Provider store={store}>
         <BrowserRouter>
-          <UpdateRepoComponent openDialog={isShowDialog} />
+          <UpdateRepoComponent/>
         </BrowserRouter>
       </Provider>
     );
     const button = mount(<Button onClick={mockCallBack}>Update</Button>);
     button.find('button').simulate('click');
-    expect(isShowDialog).toBeTruthy();
-  })
-  it('has delete button', () => {
-    const mockCallBack = jest.fn();
-    const button = mount(<Button onClick={mockCallBack}>Delete</Button>);
-    button.find('button').simulate('click');
-    expect(mockCallBack.mock.calls.length).toEqual(1);
+    expect(mockCallBack.mock.calls.length).toEqual(1)
+    expect(wrapper).toMatchSnapshot();
   })
   it('test delete', () => {
     const mockCallBack = jest.fn();
